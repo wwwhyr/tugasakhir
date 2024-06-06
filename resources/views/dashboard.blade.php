@@ -23,7 +23,7 @@
                 </div>
                 <!-- end page title -->
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-xl-5">
                         <div class="card">
                             <div class="card-body">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- end row -->
+                end row -->
 
 
             <!-- container-fluid -->

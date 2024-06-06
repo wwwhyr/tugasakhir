@@ -5,7 +5,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title> {{ env('APP_NAME') }}</title>
+    <title>Edit Data Petugas| {{ env('APP_NAME') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="{{ env('APP_NAME') }}" name="description" />
@@ -311,11 +311,11 @@
 
                             <li class="nav-item">
                                 <a class="nav-link menu-link" href="{{ route('masyarakat.index') }}">
-                                    <i class="bx bxs-user"></i> <span data-key="t-bootstrap-ui">Data Balita</span>
+                                    <i class="bx bxs-user"></i> <span data-key="t-bootstrap-ui">Data Masyarakat</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="{{ route('petugas.index') }}">
+                                <a class="nav-link menu-link" href="">
                                     <i class="bx bxs-user"></i> <span data-key="t-bootstrap-ui">Data Petugas</span>
                                 </a>
                             </li>
@@ -324,6 +324,26 @@
                                     <i class="bi bi-bar-chart-fill"></i> <span data-key="t-bootstrap-ui">Grafik Status Gizi</span>
                                 </a>
                             </li>
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link menu-link" href="">
+                                <i class="bx bx-flag"></i> <span data-key="t-bootstrap-ui">Kategori</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="">
+                                <i class="bx bx-user"></i> <span data-key="t-bootstrap-ui">Anggota</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="">
+                                <i class="bx bx-building"></i> <span data-key="t-bootstrap-ui">Rapat</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <hr>
+                        </li> -->
 
                         <li class="menu-title"><span data-key="t-menu">Pengaturan</span></li>
                         <li class="nav-item">
@@ -353,8 +373,77 @@
 
     </div>
     <!-- END layout-wrapper -->
+    <div class="main-content">
 
+<div class="page-content">
+    <div class="container-fluid">
 
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">Edit Data</h4>
+
+                    <!-- <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
+                            <li class="breadcrumb-item active">Dashbo</li>
+                        </ol>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+<body>
+
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('petugas.update', $petugas->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="kecamatan" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" placeholder="Masukkan nama lengkap" id="nama" name="nama" value="{{ $petugas->nama }}" required>
+                </div>
+            </div><!--end col-->
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="desa" class="form-label">Username</label>
+                    <input type="text" class="form-control" placeholder="Masukkan username" id="username" name="username" value="{{ $petugas->username }}" required>
+                </div>
+            </div><!--end col-->
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="nama" class="form-label">password</label>
+                    <input type="text" class="form-control" placeholder="Masukkan password" id="password" name="password" value="{{ $petugas->password }}" required>
+                </div>
+            </div><!--end col-->
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="nik" class="form-label">Daerah</label>
+                    <input type="text" class="form-control" placeholder="Masukkan daerah" id="daerah" name="daerah" value="{{ $petugas->daerah }}" required>
+                </div>
+            </div><!--end col-->
+            <div class="col-lg-12">
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Perbarui</button>
+                    <a href="{{ route('petugas.index') }}" class="btn btn-secondary">Kembali</a>
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+    </form>
+</body>
 
     <!--start back-to-top-->
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
@@ -402,38 +491,118 @@
 
     <script src="{{ asset('invoika/assets/libs/select2/select2.min.js') }}"></script>
 
+    @if (isset($datatable))
         <!--datatable js-->
-    <script src="{{ asset('invoika') }}/assets/js/pages/datatables.init.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    @endif
+
     <!-- App js -->
     <script src="{{ asset('invoika') }}/assets/js/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
-    function konfirmasiHapus(event, id) {
-        event.preventDefault(); // Mencegah tindakan default dari tombol
-        Swal.fire({
-            title: 'Apakah Anda yakin?',
-            text: "Anda tidak akan bisa mengembalikan ini!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('form-hapus-' + id).submit();
-            }
-        })
-    }
+        $('.select2').select2();
+
+        $(document).on('click', '.buttonDeletion', function(e) {
+            e.preventDefault();
+            let form = $(this).parents('form');
+
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin menghapus data ini?',
+                text: "Data yang dihapus tidak bisa dikembalikan",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!'
+            }).then((Delete) => {
+                if (Delete.isConfirmed) {
+                    form.submit()
+                    swal({
+                        title: 'Dikonfirmasi!',
+                        text: 'Data akan dihapus.',
+                        icon: 'success',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-success'
+                            }
+                        }
+                    });
+                } else {
+                    swal.close();
+                }
+            });
+        });
+
+        $(document).on('click', '.buttonKonfirmasi', function(e) {
+            e.preventDefault();
+            let form = $(this).parents('form');
+
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin memulai rapat ini?',
+                text: "Rapat dan perekaman notulensi akan dimulai",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Mulai sekarang!'
+            }).then((Delete) => {
+                if (Delete.isConfirmed) {
+                    form.submit()
+                    swal({
+                        title: 'Dikonfirmasi!',
+                        text: 'Mohon tunggu, rapat akan dimulai.',
+                        icon: 'success',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-success'
+                            }
+                        }
+                    });
+                } else {
+                    swal.close();
+                }
+            });
+        });
+
+        $(document).on('click', '.buttonSelesai', function(e) {
+            e.preventDefault();
+            let form = $(this).parents('form');
+
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin menyelesaikan rapat ini?',
+                text: "Rapat dan perekaman notulensi akan ditutup",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Selesaikan sekarang!'
+            }).then((Delete) => {
+                if (Delete.isConfirmed) {
+                    form.submit()
+                    swal({
+                        title: 'Dikonfirmasi!',
+                        text: 'Mohon tunggu, data rapat akan disimpan.',
+                        icon: 'success',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-success'
+                            }
+                        }
+                    });
+                } else {
+                    swal.close();
+                }
+            });
+        });
     </script>
+
 
     @stack('js')
 </body>

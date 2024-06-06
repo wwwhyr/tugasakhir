@@ -21,7 +21,7 @@
     <link href="{{ asset('invoika') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <style>
         body {
-            background: url('{{ asset('img/bg.png') }}');
+            background: url('{{ asset('img/bgdinas.JPG') }}');
             background-size:cover;
             background-repeat: no-repeat;
         }
@@ -42,7 +42,7 @@
                                     <div class="text-center mb-5">
                                         <a href="index.html">
                                             <span class="logo-lg">
-                                                <img src="{{ asset('img/logo.png') }}" alt="" style="width: 400px;">
+                                                <img src="{{ asset('img/logologin.png') }}" alt="" style="width: 400px;">
                                             </span>
                                         </a>
                                     </div>
@@ -88,7 +88,7 @@
 
                                     <div class="mt-5 text-center">
                                         <p class="mb-0 text-muted">©
-                                            2023 {{ env('APP_NAME') }}. Developed by {{ env('APP_AUTHOR') }}
+                                            2024 {{ env('APP_NAME') }}. Developed by Wahyu Ramadhan
                                         </p>
                                     </div>
                                 </div>
