@@ -19,8 +19,8 @@ class CreateMasyarakatsTable extends Migration
             $table->string('desa');
             $table->string('nama');
             $table->integer('usia');
-            $table->integer('tinggi_badan');
-            $table->integer('berat_badan');
+            $table->double('tinggi_badan');
+            $table->double('berat_badan');
             $table->timestamps();
         });
         

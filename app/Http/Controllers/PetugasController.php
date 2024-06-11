@@ -58,11 +58,18 @@ class PetugasController extends Controller
         return redirect()->route('petugas.index')->with('success', 'Petugas updated successfully.');
     }
 
-    public function destroy(Petugas $petugas)
+    public function destroy($petugas)
     {
-        $petugas->delete();
+        $data = Petugas::where('id',$petugas)->first();
+        // dd($data);
+        if($data->delete()){
+            return redirect()->route('petugas.index')->with('success', 'Petugas deleted successfully.');
+        }else{
+            return redirect()->route('petugas.index')->with('error', 'Petugas deleted Error.');
+        }
+        
 
-        return redirect()->route('petugas.index')->with('success', 'Petugas deleted successfully.');
+        // return redirect()->route('petugas.index')->with('success', 'Petugas deleted successfully.');
     }
 
 }

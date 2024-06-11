@@ -10,7 +10,7 @@
                         <div class="card-header d-flex align-items-center">
                             <h5 class="card-title mb-0 flex-grow-1">Data Balita</h5>
                             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
-                                Tambah Data
+                            <i class="bx bx-plus-circle"> Tambah Data</i>
                             </button>
                         </div>
 
@@ -42,11 +42,11 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="tinggi_badan" class="form-label">Tinggi Badan (cm)</label>
-                                                <input type="number" class="form-control" id="tinggi_badan" name="tinggi_badan" required>
+                                                <input type="number" class="form-control" id="tinggi_badan" name="tinggi_badan" step="0.1" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="berat_badan" class="form-label">Berat Badan (kg)</label>
-                                                <input type="number" class="form-control" id="berat_badan" name="berat_badan" required>
+                                                <input type="number" class="form-control" id="berat_badan" name="berat_badan" step="0.1" required>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Simpan</button>
                                         </form>

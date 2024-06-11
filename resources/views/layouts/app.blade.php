@@ -17,7 +17,7 @@
     <link href="{{ asset('invoika') }}/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet"
         type="text/css" />
 
-    <link rel="stylesheet" href="{{ asset('invoika/assets/libs/select2/select2.min.css') }}">
+    
 
     <!-- Layout config Js -->
     <script src="{{ asset('invoika') }}/assets/js/layout.js"></script>
@@ -35,14 +35,14 @@
     <!-- glightbox css -->
     <link rel="stylesheet" href="{{ asset('invoika') }}/assets/libs/glightbox/css/glightbox.min.css">
 
-    @if (isset($datatable))
+    
         <!--datatable css-->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
         <!--datatable responsive css-->
         <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
 
         <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
-    @endif
+   
 
     <style>
         @media print {
@@ -326,11 +326,16 @@
                             </li>
 
                         <li class="menu-title"><span data-key="t-menu">Pengaturan</span></li>
-                        <li class="nav-item">
+                        
 
                             <li class="nav-item">
                                 <a class="nav-link menu-link" href="">
                                     <i class=" bx bx-user-circle"></i> <span data-key="t-bootstrap-ui">Profil</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="">
+                                    <i class=" bx bx-map-alt"></i> <span data-key="t-bootstrap-ui">Daerah</span>
                                 </a>
                             </li>
 
@@ -405,14 +410,14 @@
         <!--datatable js-->
     <script src="{{ asset('invoika') }}/assets/js/pages/datatables.init.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+
     <!-- App js -->
     <script src="{{ asset('invoika') }}/assets/js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
