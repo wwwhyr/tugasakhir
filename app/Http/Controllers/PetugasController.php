@@ -21,16 +21,19 @@ class PetugasController extends Controller
     public function store(Request $request)
 {
     $validatedData = $request->validate([
-        'nama' => 'required|string|max:255',
-        'username' => 'required|string|max:255',
-        'password' => 'required|string|max:255',
-        'daerah' => 'required|string|max:255',
+        'nama' => 'required',
+        'username' => 'required|unique:petugass,username',
+        'password' => 'required',
+        'daerah' => 'required',
     ]);
-
-    Petugas::create($validatedData);
-
-    return redirect()->route('petugas.index')->with('success', 'Petugas created successfully.');
+    try{
+        Petugas::create($validatedData);
+        return redirect()->back()->with('success', 'Data berhasil disimpan.');
+    } catch (\Exception $e) {
+        return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan saat menyimpan data.']);
+    }
 }
+
 
     public function show($id)
     {
@@ -43,20 +46,22 @@ class PetugasController extends Controller
         return view('petugas.edit', compact('petugas'));
     }
 
-    public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'password' => 'required|string|max:255',
-            'daerah' => 'required|string|max:255',
-        ]);
+    public function update(Request $request, Petugas $petugas)
+{
+    $validatedData = $request->validate([
+        'nama' => 'required',
+        'username' => 'required|unique:petugass,username,' . $petugas,
+        'password' => 'sometimes',
+        'daerah' => 'required',
+    ]);
 
-        $petugas = Petugas::findOrFail($id);
+    try {
         $petugas->update($validatedData);
-
-        return redirect()->route('petugas.index')->with('success', 'Petugas updated successfully.');
+        return redirect()->route('petugas.index')->with('success', 'Data berhasil diperbarui.');
+    }catch (\Exception $e) {
+        return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan saat memperbarui data.']);
     }
+}
 
     public function destroy($petugas)
     {

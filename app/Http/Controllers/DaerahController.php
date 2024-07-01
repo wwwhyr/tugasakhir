@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Daerah;
@@ -6,6 +7,12 @@ use Illuminate\Http\Request;
 
 class DaerahController extends Controller
 {
+    public function getDesaByKecamatan($kecamatan)
+    {
+        $desas = Daerah::where('kecamatan', $kecamatan)->pluck('desa');
+        return response()->json($desas);
+    }
+
     public function index()
     {
         $daerahs = Daerah::all();

@@ -1,66 +1,119 @@
 @extends('layouts.app')
+
 @section('content')
-    <div class="main-content">
-
-        <div class="page-content">
-            <div class="container-fluid">
-
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0">Dashboard</h4>
-
-                            <div class="page-title-right">
-                                <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Dashboard</li>
-                                </ol>
-                            </div>
-
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <h5>Dashboard</h5>
                         </div>
                     </div>
                 </div>
-                <!-- end page title -->
-
-                <!-- <div class="row">
-                    <div class="col-xl-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center gy-4">
-                                    <div class="col-sm-8">
-                                        <div class="box">
-                                            <h5 class="fs-20 text-truncate">Kelola Catatan Rapatmu</h5>
-                                            <p class="text-muted fs-15">Sistem kelola kelola catatan rapat memudahkan anda untuk merekap jadwal rapat dan hasil rapat.</p>
-                                            <a href="" class="btn btn-primary">Buat Rapat</a>
-                                            <div class="mt-4 alert alert-secondary alert-label-icon label-arrow fade show" role="alert">
-                                                <i class="ri-user-smile-line label-icon"></i>
-                                                Awali Aktifitas dengan membaca Basmalah.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="text-center px-2">
-                                            <img src="{{ asset('invoika') }}/assets/images/invoice-widget.png"
-                                                class="img-fluid" style="height: 141px;" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Grafik Stunting</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row" id="chartsContainer"></div>
                         </div>
                     </div>
                 </div>
-                end row -->
-
-
-            <!-- container-fluid -->
+            </div>
         </div>
-        <!-- End Page-content -->
-
-        @include('components.footer')
     </div>
+</div>
+
+<style>
+    .chart-div {
+        margin-bottom: 20px;
+        border: 1px solid #e1e5eb;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('{{ route('dashboard.stunting-data') }}')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);  // Debugging data
+                const chartsContainer = document.getElementById('chartsContainer');
+
+                for (const [kecamatan, desaData] of Object.entries(data)) {
+                    const categories = desaData.map(item => item.desa);
+                    const totalData = desaData.map(item => item.total);
+                    const stuntingData = desaData.map(item => item.stunting);
+
+                    const chartDiv = document.createElement('div');
+                    chartDiv.className = 'col-md-6 chart-div';
+                    chartsContainer.appendChild(chartDiv);
+
+                    var options = {
+                        chart: {
+                            type: 'bar',
+                            height: 350,
+                            toolbar: {
+                                show: true
+                            }
+                        },
+                        title: {
+                            text: `Grafik Stunting Kecamatan ${kecamatan}`,
+                            align: 'center'
+                        },
+                        series: [{
+                            name: 'Total',
+                            data: totalData
+                        }, {
+                            name: 'Stunting',
+                            data: stuntingData
+                        }, {
+
+                        }],
+                        plotOptions: {
+                        bar: {
+                            borderRadius: 4,
+                            borderRadiusApplication: 'end',
+                            horizontal: true,
+                        }
+                        },
+                        xaxis: {
+                            categories: categories
+                        },
+                        grid: {
+                            row: {
+                                colors: ['#f3f4f6', 'transparent'], // Warna baris grid
+                                opacity: 0.5
+                            }
+                        },
+                        colors: ['#5e72e4', '#f5365c'],
+                        dataLabels: {
+                            enabled: true,
+                            style: {
+                                colors: ['#fff']
+                            },
+                            formatter: function(val, opt) {
+                                return opt.w.globals.labels[opt.dataPointIndex] + ": " + val;
+                            },
+                            offsetX: 0,
+                            dropShadow: {
+                                enabled: true
+                            }
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    };
+
+                    var chart = new ApexCharts(chartDiv, options);
+                    chart.render();
+                }
+            })
+            .catch(error => console.error('Error fetching data:', error));  // Handling fetch error
+    });
+</script>
 @endsection
-
-@push('js')
-
-@endpush

@@ -18,7 +18,8 @@
         type="text/css" />
 
     
-
+<!-- Sweet Alert css-->
+<link href="{{ asset('invoika') }}/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     <!-- Layout config Js -->
     <script src="{{ asset('invoika') }}/assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
@@ -215,7 +216,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <a class="dropdown-item" href=""><i
+                                <a class="dropdown-item" href="{{ route('profile.index') }}"><i
                                         class="bx bx-user fs-15 align-middle me-1"></i> <span
                                         key="t-profile">Profile</span></a>
                                 <div class="dropdown-divider"></div>
@@ -320,8 +321,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="">
-                                    <i class="bi bi-bar-chart-fill"></i> <span data-key="t-bootstrap-ui">Grafik Status Gizi</span>
+                                <a class="nav-link menu-link" href="{{ route('grafik.status_gizi') }}">
+                                    <i class="bi bi-bar-chart-fill"></i> <span data-key="t-bootstrap-ui">Grafik Status Stunting</span>
                                 </a>
                             </li>
 
@@ -329,12 +330,12 @@
                         
 
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="">
+                                <a class="nav-link menu-link" href="{{ route('profile.index') }}">
                                     <i class=" bx bx-user-circle"></i> <span data-key="t-bootstrap-ui">Profil</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="">
+                                <a class="nav-link menu-link" href="{{ route('daerahs.index') }}">
                                     <i class=" bx bx-map-alt"></i> <span data-key="t-bootstrap-ui">Daerah</span>
                                 </a>
                             </li>
@@ -384,10 +385,16 @@
     <script src="{{ asset('invoika') }}/assets/libs/node-waves/waves.min.js"></script>
     <script src="{{ asset('invoika') }}/assets/libs/feather-icons/feather.min.js"></script>
     <script src="{{ asset('invoika') }}/assets/js/plugins.js"></script>
+    
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('invoika') }}/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Sweet alert init js-->
+    <script src="{{ asset('invoika') }}/assets/js/pages/sweetalerts.init.js"></script>
 
     <!-- apexcharts -->
     <script src="{{ asset('invoika') }}/assets/libs/apexcharts/apexcharts.min.js"></script>
-
+    <script src="{{ asset('invoika') }}/assets/js/pages/apexcharts-bar.init.js"></script>
     <!-- Vector map-->
     <script src="{{ asset('invoika') }}/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
     <script src="{{ asset('invoika') }}/assets/libs/jsvectormap/maps/world-merc.js"></script>
@@ -421,24 +428,6 @@
     <!-- App js -->
     <script src="{{ asset('invoika') }}/assets/js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-    function konfirmasiHapus(event, id) {
-        event.preventDefault(); // Mencegah tindakan default dari tombol
-        Swal.fire({
-            title: 'Apakah Anda yakin?',
-            text: "Anda tidak akan bisa mengembalikan ini!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('form-hapus-' + id).submit();
-            }
-        })
-    }
-    </script>
 
     @stack('js')
 </body>

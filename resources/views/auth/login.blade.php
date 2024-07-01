@@ -72,8 +72,6 @@
                                                                         <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="las la-eye align-middle fs-18"></i></button>
                                                                     </div>
                                                                 </div>
-                                                                <br>
-
                                                                 <div class="mt-2">
                                                                     <button class="btn btn-warning w-100" type="submit">Log In</button>
                                                                 </div>
