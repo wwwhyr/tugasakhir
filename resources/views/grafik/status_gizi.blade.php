@@ -12,7 +12,7 @@
                         </div>
                         <div class="card-body">
                             <form id="filterForm">
-                                <div class="col-lg-4">
+                                <div class="col-lg-2">
                                     <label for="kecamatan">Pilih Kecamatan</label>
                                     <select id="kecamatan" name="kecamatan" class="form-control custom-select">
                                         <option value="">Semua</option>
@@ -21,7 +21,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-2">
                                     <label for="desa">Pilih Desa</label>
                                     <select id="desa" name="desa" class="form-control custom-select">
                                         <option value="">Semua</option>

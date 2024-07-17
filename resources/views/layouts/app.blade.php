@@ -198,14 +198,14 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">
 
-                                    @if (empty(Auth::user()->photo))
+                                    <!-- @if (empty(Auth::user()->photo))
                                     <img class="rounded-circle header-profile-user"
-                                    src="{{ asset('img/fav.png') }}"
+                                    src="{{ asset('img/logouptd.png') }}"
                                     alt="Header Avatar">
                                     @else
                                     <img class="rounded-circle header-profile-user"
                                     src="{{url(Storage::url(Auth::user()->photo))}}" alt="Header Avatar">
-                                    @endif
+                                    @endif -->
 
                                     <span class="text-start ms-xl-2">
                                         <span
@@ -270,19 +270,19 @@
                 <!-- Dark Logo-->
                 <a href="" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ asset('img/logologin.png') }}" alt="" height="40">
+                        <img src="{{ asset('img/logouptd.png') }}" alt="" height="40">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('img/logologin.png') }}" alt="" height="40">
+                        <img src="{{ asset('img/logouptd.png') }}" alt="" height="40">
                     </span>
                 </a>
                 <!-- Light Logo-->
                 <a href="" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset('img/logologin.png') }}" alt="" height="40">
+                        <img src="{{ asset('img/logouptd.png') }}" alt="" height="40">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('img/logologin.png') }}" alt="" height="40">
+                        <img src="{{ asset('img/logouptd.png') }}" alt="" height="40">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PetugasController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\MasyarakatExportController;
 use App\Http\Controllers\DaerahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GrafikStatusGiziController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +20,7 @@ use App\Http\Controllers\GrafikStatusGiziController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::post('/masyarakat/import', [MasyarakatController::class, 'import'])->name('masyarakat.import');
 Route::get('export-excel', [MasyarakatExportController::class, 'exportExcel'])->name('export.excel');
 Route::get('export-csv', [MasyarakatExportController::class, 'exportCsv'])->name('export.csv');
@@ -37,20 +40,23 @@ Route::get('/grafik/filter', [GrafikStatusGiziController::class, 'filter'])->nam
 Route::get('/get-desa', [MasyarakatController::class, 'getDesa'])->name('getDesa');
 Route::get('/update-status', [MasyarakatController::class, 'updateStatus'])->name('masyarakat.updateStatus');
 
+// Routes for registration
+Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('register', [RegisteredUserController::class, 'store']);
+
+// Routes that require authentication
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::resource('masyarakat', MasyarakatController::class);
+    Route::resource('petugas', PetugasController::class);
 });
-
-
-Route::resource('masyarakat', MasyarakatController::class);
-Route::resource('petugas', PetugasController::class);
 
 Route::get('/', [App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'create']);
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
-    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
 });
 
 require __DIR__.'/auth.php';

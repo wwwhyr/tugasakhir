@@ -8,8 +8,8 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
-                            <h5 class="card-title mb-0 flex-grow-1">Data Masyarakat</h5>
-                            <a href="{{ route('masyarakat.updateStatus') }}" class="btn btn-primary btn-sm" style="margin-right: 10px;">Update Status</a>
+                            <h5 class="card-title mb-0 flex-grow-1">Data Balita</h5>
+                            <a href="{{ route('masyarakat.updateStatus') }}" class="btn btn-primary btn-sm" style="margin-right: 10px;">Perbarui Status</a>
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalgrid" onclick="openAddModal()">
                                 Tambah Data
                             </button>
@@ -18,10 +18,10 @@
                             <form action="{{ route('masyarakat.import') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="file">Upload File Excel:</label>
+                                    <label for="file">Masukan file excel:</label>
                                     <div class=" col-lg-4 d-flex align-items-center">
                                         <input type="file" name="file" class="form-control form-control-sm me-2" required>
-                                        <button type="submit" class="btn btn-primary btn-sm">Import</button>
+                                        <button type="submit" class="btn btn-primary btn-sm">Impor</button>
                                     </div>
                                 </div>
                             </form>

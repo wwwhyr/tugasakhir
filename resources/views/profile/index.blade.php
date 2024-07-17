@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit Profil</a>
+                            <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit Profile</a>
                         </div>
                     </div>
                 </div>

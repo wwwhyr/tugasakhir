@@ -21,84 +21,85 @@
     <link href="{{ asset('invoika') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <style>
         body {
-            background: url('{{ asset('img/bgdinas.JPG') }}');
+            background: url('{{ asset('img/puskesmas-lohbener-bg.jpg') }}');
             background-size:cover;
             background-repeat: no-repeat;
         }
     </style>
 </head>
 
-    <body class="auth-bg 100-vh">
-        <div class="bg-overlay bg-light"></div>
+<body class="auth-bg 100-vh">
+    <div class="bg-overlay bg-light"></div>
 
-        <div class="account-pages">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <div class="auth-full-page-content d-flex min-vh-100 py-sm-5 py-4">
-                            <div class="w-100">
-                                <div class="d-flex flex-column h-100 py-0 py-xl-4">
+    <div class="account-pages">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="auth-full-page-content d-flex min-vh-100 py-sm-5 py-4">
+                        <div class="w-100">
+                            <div class="d-flex flex-column h-100 py-0 py-xl-4">
 
-                                    <div class="text-center mb-5">
-                                        <a href="index.html">
-                                            <span class="logo-lg">
-                                                <img src="{{ asset('img/logologin.png') }}" alt="" style="width: 400px;">
-                                            </span>
-                                        </a>
-                                    </div>
+                                <div class="text-center mb-5">
+                                    <a href="index.html">
+                                        <span class="logo-lg">
+                                            <img src="{{ asset('img/logouptd.png') }}" alt="" style="width: 400px;">
+                                        </span>
+                                    </a>
+                                </div>
 
-                                    <div class="card my-auto overflow-hidden" style="border-radius:5%;">
-                                            <div class="row g-0">
-                                                <div class="col-lg-12">
-                                                    <div class="p-lg-5 p-4">
-                                                        <div class="text-center">
-                                                            <h5 class="mb-0">{{ env('APP_NAME') }}</h5>
-                                                            <p class="text-muted mt-2">{{ env('APP_DESC') }}</p>
-                                                        </div>
-                                                        @include('components.flash_messages')
+                                <div class="card my-auto overflow-hidden" style="border-radius:5%;">
+                                    <div class="row g-0">
+                                        <div class="col-lg-12">
+                                            <div class="p-lg-5 p-4">
+                                                <div class="text-center">
+                                                    <h5 class="mb-0">Login</h5>
+                                                    <p class="text-muted mt-2">{{ env('APP_DESC') }}</p>
+                                                </div>
+                                                @include('components.flash_messages')
 
-                                                        <div class="mt-4">
-                                                            <form action="{{ route('login') }}" class="auth-input" method="POST">
-                                                                @csrf
-                                                                <div class="mb-3">
-                                                                    <label for="username" class="form-label">Username</label>
-                                                                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" value="{{ old('username') }}">
-                                                                </div>
-
-                                                                <div class="mb-2">
-                                                                    <label for="userpassword" class="form-label">Password</label>
-                                                                    <div class="position-relative auth-pass-inputgroup mb-3">
-                                                                        <input type="password" class="form-control pe-5 password-input" name="password" placeholder="Enter password" id="password-input">
-                                                                        <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="las la-eye align-middle fs-18"></i></button>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="mt-2">
-                                                                    <button class="btn btn-warning w-100" type="submit">Log In</button>
-                                                                </div>
-                                                            </form>
+                                                <div class="mt-4">
+                                                    <form action="{{ route('login') }}" class="auth-input" method="POST">
+                                                        @csrf
+                                                        <div class="mb-3">
+                                                            <label for="username" class="form-label">Username</label>
+                                                            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" value="{{ old('username') }}">
                                                         </div>
 
+                                                        <div class="mb-2">
+                                                            <label for="userpassword" class="form-label">Password</label>
+                                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                                <input type="password" class="form-control pe-5 password-input" name="password" placeholder="Enter password" id="password-input">
+                                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="las la-eye align-middle fs-18"></i></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-2">
+                                                            <button class="btn btn-warning w-100" type="submit">Log In</button>
+                                                        </div>
+                                                    </form>
+                                                    <div class="mt-3 text-center">
+                                                        <a href="{{ route('register') }}" class="btn btn-link">Tidak punya akun?</a>
                                                     </div>
                                                 </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                    <!-- end card -->
+                                </div>
+                                <!-- end card -->
 
-                                    <div class="mt-5 text-center">
-                                        <p class="mb-0 text-muted">©
-                                            2024 {{ env('APP_NAME') }}. Developed by Wahyu Ramadhan
-                                        </p>
-                                    </div>
+                                <div class="mt-5 text-center">
+                                    <p class="mb-0 text-muted">© 2024 {{ env('APP_NAME') }}. Developed by Wahyu Ramadhan</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- end col -->
                 </div>
-                <!-- end row -->
+                <!-- end col -->
             </div>
-            <!-- end container -->
+            <!-- end row -->
         </div>
+        <!-- end container -->
+    </div>
 
     <!-- JAVASCRIPT -->
     <script src="{{ asset('invoika') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
